@@ -10,9 +10,11 @@ lateinit var ViewAll: Button
 
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         ViewAll = findViewById(R.id.ViewAll)
         TransferButton = findViewById(R.id.Transactionbtn)
 
@@ -36,9 +38,12 @@ class MainActivity : AppCompatActivity() {
 
         }
         TransferButton.setOnClickListener {
+            var mainintent : Intent = intent
             val i = Intent(this,History::class.java)
-            intent.putExtra("istransfer",false);
+
             startActivity(i)
+
+
         }
 
 
