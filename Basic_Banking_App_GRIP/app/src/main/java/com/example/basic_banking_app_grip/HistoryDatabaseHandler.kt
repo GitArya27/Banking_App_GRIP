@@ -24,18 +24,18 @@ class HistoryDatabaseHandler(context : Context):
         private const val custB_newBal_H = "cust_B_new_bal"
         private const val amount_transfer_H = "Amount"
     }
-    override fun onCreate(p0: SQLiteDatabase?) {
+    override fun onCreate(db: SQLiteDatabase?) {
         val CREATE_CONTACTS_TABLE_H =("CREATE TABLE " + HistoryDatabaseHandler.TABLE_CONTACTS_H + "("
                 + HistoryDatabaseHandler.key_ID_H + " INTEGER PRIMARY KEY," + HistoryDatabaseHandler.custA_name_H + " TEXT,"
                 + HistoryDatabaseHandler.custA_newbal_H + " TEXT," + HistoryDatabaseHandler.custA_prevbal_H + " TEXT,"
                 + HistoryDatabaseHandler.custB_name_H + " TEXT," + HistoryDatabaseHandler.custB_prevBal_H + " TEXT,"
                 + HistoryDatabaseHandler.custB_newBal_H + " TEXT," + HistoryDatabaseHandler.amount_transfer_H + " TEXT" +")")
-        p0?.execSQL(CREATE_CONTACTS_TABLE_H)
+        db?.execSQL(CREATE_CONTACTS_TABLE_H)
     }
 
-    override fun onUpgrade(p0: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-//        p0!!execSQL("DROP TABLE IF EXISTS $DATABASE_NAME_H")
-        onCreate(p0)
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+        db!!.execSQL("DROP TABLE IF EXISTS $DATABASE_NAME_H")
+        onCreate(db)
     }
 
     fun adddata(data : HistoryClassModel ):Long{
@@ -52,15 +52,16 @@ class HistoryDatabaseHandler(context : Context):
         contentValues.put(HistoryDatabaseHandler.custB_newBal_H,data.newBalB)
         contentValues.put(HistoryDatabaseHandler.amount_transfer_H,data.Amount)
 
-        val success = db.insert(HistoryDatabaseHandler.TABLE_CONTACTS_H,null,contentValues)
+        val success = db.insert(TABLE_CONTACTS_H,null,contentValues)
         db.close()
         return success
     }
 
     @SuppressLint("Range")
     fun getalldata():ArrayList<HistoryClassModel>{
-        val arr :ArrayList<HistoryClassModel> = ArrayList()
-        var selectQuary = "SELECT *FROM ${HistoryDatabaseHandler.TABLE_CONTACTS_H}"
+        val arr :ArrayList<HistoryClassModel> = ArrayList<HistoryClassModel>()
+
+        var selectQuary = "SELECT *FROM ${TABLE_CONTACTS_H}"
         val db = this.readableDatabase
         var cursor: Cursor? = null
         try{
@@ -79,14 +80,16 @@ class HistoryDatabaseHandler(context : Context):
         var Amount: String
         if(cursor.moveToFirst()){
             do{
-                id=cursor.getInt(cursor.getColumnIndex(HistoryDatabaseHandler.key_ID_H))
-                NameA = cursor.getString(cursor.getColumnIndex(HistoryDatabaseHandler.custA_name_H))
-                NameB = cursor.getString(cursor.getColumnIndex(HistoryDatabaseHandler.custA_name_H))
-                prevBalA= cursor.getString(cursor.getColumnIndex(HistoryDatabaseHandler.custA_name_H))
-                prevBalB= cursor.getString(cursor.getColumnIndex(HistoryDatabaseHandler.custA_name_H))
-                newBalA=cursor.getString(cursor.getColumnIndex(HistoryDatabaseHandler.custA_name_H))
-                newBalB=cursor.getString(cursor.getColumnIndex(HistoryDatabaseHandler.custA_name_H))
-                Amount=cursor.getString(cursor.getColumnIndex(HistoryDatabaseHandler.custA_name_H))
+                id=cursor.getInt(cursor.getColumnIndex(key_ID_H))
+                NameA = cursor.getString(cursor.getColumnIndex(custA_name_H))
+                NameB = cursor.getString(cursor.getColumnIndex(custB_name_H))
+                prevBalA= cursor.getString(cursor.getColumnIndex(custA_prevbal_H))
+                prevBalB= cursor.getString(cursor.getColumnIndex(custB_prevBal_H))
+                newBalA=cursor.getString(cursor.getColumnIndex(custA_newbal_H))
+                newBalB=cursor.getString(cursor.getColumnIndex(custB_newBal_H))
+                Amount=cursor.getString(cursor.getColumnIndex(amount_transfer_H))
+                val hist = HistoryClassModel(id,NameA,NameB,prevBalA,prevBalB,newBalA,newBalB,Amount)
+                arr.add(hist)
             }while (cursor.moveToNext())
         }
         return arr

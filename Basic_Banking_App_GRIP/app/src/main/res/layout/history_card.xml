@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
     android:clickable="true"
     android:id="@+id/card_layout"
     android:background="@drawable/layout_bg">
@@ -12,7 +12,10 @@
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="205dp"
@@ -31,6 +34,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -43,25 +47,28 @@
                         android:id="@+id/textView11"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:text="NAME :"
                         android:textColor="@color/black"
-                        android:textSize="17dp" />
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/textView12"
                         android:layout_width="match_parent"
+                        android:layout_marginTop="5dp"
                         android:layout_height="wrap_content"
                         android:text="Balance Before"
                         android:textColor="@color/black"
-                        android:textSize="17dp" />
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/textView13"
+                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Balance After"
                         android:textColor="@color/black"
-                        android:textSize="17dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -75,25 +82,27 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="TextView"
+                        android:layout_marginTop="5dp"
                         android:textColor="@color/black"
-                        android:textSize="17dp" />
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/Aprevbal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="TextView"
+                        android:layout_marginTop="5dp"
                         android:textColor="@color/black"
-                        android:textSize="17dp" />
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/AnowBal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="5dp"
                         android:text="TextView"
                         android:textColor="@color/black"
-                        android:textSize="17dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -125,27 +134,30 @@
 
                     <TextView
                         android:id="@+id/textView21"
+                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="NAME"
                         android:textColor="@color/black"
-                        android:textSize="17dp" />
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/textView20"
+                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Balance Before"
                         android:textColor="@color/black"
-                        android:textSize="17dp" />
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/textView19"
                         android:layout_width="match_parent"
+                        android:layout_marginTop="5dp"
                         android:layout_height="wrap_content"
                         android:text="Balance After"
                         android:textColor="@color/black"
-                        android:textSize="17dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -159,25 +171,27 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="TextView"
+                        android:layout_marginTop="5dp"
                         android:textColor="@color/black"
-                        android:textSize="17dp" />
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/BprevBal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="TextView"
+                        android:layout_marginTop="5dp"
                         android:textColor="@color/black"
-                        android:textSize="17dp" />
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/Bnowbal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="5dp"
                         android:text="TextView"
                         android:textColor="@color/black"
-                        android:textSize="17dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
